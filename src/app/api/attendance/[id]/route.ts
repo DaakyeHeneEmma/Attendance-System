@@ -9,7 +9,7 @@ export async function DELETE(
   try {
     await connectDB();
     const record = await AttendanceModel.findOneAndDelete({ id: params.id });
-    
+     await connectDB();
     if (!record) {
       return NextResponse.json(
         { error: 'Record not found' },
