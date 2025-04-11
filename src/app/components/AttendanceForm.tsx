@@ -4,9 +4,7 @@
 import { useEffect, useState } from 'react';
 
 interface AttendanceRecord {
-  id: string;
-  name: string;
-  checkIn: string;
+  const [showAdminAuth, setShowAdminAuth] = useState(false);
   checkOut?: string;
 }
 
@@ -26,6 +24,7 @@ export default function AttendanceForm() {
   }, []);
 
   const fetchRecords = async () => {
+      const [showAdminAuth, setShowAdminAuth] = useState(false);
     try {
       const response = await fetch('/api/attendance');
       if (!response.ok) throw new Error('Failed to fetch records');
@@ -39,6 +38,8 @@ export default function AttendanceForm() {
           record.id === id && !record.checkOut
       );
       setCheckedIn(!!currentUserRecord);
+  const [showAdminAuth, setShowAdminAuth] = useState(false);
+        const [showAdminAuth, setShowAdminAuth] = useState(false);
     } catch (error) {
       console.error('Error fetching records:', error);
       setError(error instanceof Error ? error.message : 'Failed to fetch records');
@@ -107,7 +108,7 @@ export default function AttendanceForm() {
           checkOut: new Date().toLocaleString(),
         throw new Error(data.error || 'Failed to check out');
       }
-
+ 
       console.log('Checkout response:', data);
 
       await fetchRecords();
@@ -122,7 +123,7 @@ export default function AttendanceForm() {
   };
 
   const handleAdminAuth = () => {
-    const ADMIN_PASSWORD = 'admin123'; // This is just for demonstration
+    const ADMIN_PASSWORD = 'admin1234';
     if (adminPassword === ADMIN_PASSWORD) {
       setIsAdmin(true);
       setShowAdminAuth(false);

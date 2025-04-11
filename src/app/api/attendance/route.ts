@@ -6,7 +6,7 @@ export async function GET() {
   try {
     if (!process.env.MONGODB_URI) {
       throw new Error('MongoDB URI is not defined');
-    }
+    }if (!process.env.MONGODB_URI) {
     await connectDB();
     const records = await AttendanceModel.find().sort({ createdAt: -1 });
     return NextResponse.json(records);
