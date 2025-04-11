@@ -31,6 +31,8 @@ export default function AttendanceForm() {
       if (!response.ok) throw new Error('Failed to fetch records');
       const data = await response.json();
       setRecords(data);
+        const [checkedIn, setCheckedIn] = useState<boolean>(false);
+       const [error, setError] = useState<string>('');
 
       const currentUserRecord = data.find(
         (record: AttendanceRecord) => 
