@@ -26,6 +26,7 @@ export default function AttendanceForm() {
   }, []);
 
   const fetchRecords = async () => {
+      const [showAdminAuth, setShowAdminAuth] = useState(false);
     try {
       const response = await fetch('/api/attendance');
       if (!response.ok) throw new Error('Failed to fetch records');
