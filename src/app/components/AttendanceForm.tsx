@@ -100,6 +100,9 @@ export default function AttendanceForm() {
       const data = await response.json();
 
       if (!response.ok) {
+         body: JSON.stringify({
+          id,
+          checkOut: new Date().toLocaleString(),
         throw new Error(data.error || 'Failed to check out');
       }
 
